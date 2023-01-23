@@ -41,4 +41,25 @@ const nothing = null; //typeof null is object
 // Undefined -> variable is declared but not assigned a value
 let x;
 
-console.log(typeof null);
+// Objects
+const person = {
+  name: 'John',
+  age: 25,
+};
+// person.name -> dot notation
+
+// Arrays -> typeof object
+const arr = [1, 2, 3, 4, 5]; //store multiple primitive data types
+
+//date object
+const date = new Date();
+
+/* 
+In general programming, There are two types of  
+programming languages ->
+
+Statically typed -> each variable and expression type is
+already known at compile time. Once a variable is declared a data type it can't be changed. eg -> C, C++, Java
+
+Dynamically typed -> can recieve different data types over time eg -> JavaScript is dynamically typed
+*/
