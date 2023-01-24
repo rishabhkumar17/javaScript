@@ -50,3 +50,25 @@ Comparison operators and equality
     The good ones : === !==
     The bad ones : == != (avoid using)
 */
+
+/*
+Logical operators
+    AND && -> all operands are true -> true
+    OR || -> atleast one operand is true -> true
+    NOT ! -> convert the boolean value to opposite value
+*/
+
+/*
+Assignment operator ( =, +=, -=, *=, /=)
+    let number = 2
+    number += 5 => 7
+    number -= 5 => -3
+    number *= 5 => 10
+    let string = "hello"
+    string += " john" 
+    console.log(string) -> hello john 
+*/
+
+let string = 'hello';
+string += ' john';
+console.log(string);
