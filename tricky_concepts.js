@@ -37,9 +37,35 @@ function hoist() {
   console.log(message);
 }
 
-hoist2(); // ReferenceError: Cannot access 'hoist2' before initialization
+// hoist2(); // ReferenceError: Cannot access 'hoist2' before initialization
 const hoist2 = () => {
   // arrow function not hoisted
   var message = 'test';
   console.log(message);
 };
+
+// Closures in JavaScript
+
+/* const outer = () => {
+  const outerVar = 'hello';
+
+  const inner = () => {
+    const innerVar = 'hey';
+    console.log(outerVar, innerVar);
+  };
+};
+
+inner(); */ // ReferenceError: inner is not defined
+
+const outer = () => {
+  const outerVar = 'hello';
+
+  const inner = () => {
+    const innerVar = 'hey';
+    console.log(outerVar, innerVar);
+  };
+  return inner;
+};
+
+const innerFn = outer();
+innerFn(); // nested functions have access to variables declared in outer scope
