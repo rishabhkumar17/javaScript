@@ -52,13 +52,6 @@ Comparison operators and equality
 */
 
 /*
-Logical operators
-    AND && -> all operands are true -> true
-    OR || -> atleast one operand is true -> true
-    NOT ! -> convert the boolean value to opposite value
-*/
-
-/*
 Assignment operator ( =, +=, -=, *=, /=)
     let number = 2
     number += 5 => 7
@@ -69,6 +62,36 @@ Assignment operator ( =, +=, -=, *=, /=)
     console.log(string) -> hello john 
 */
 
-let string = 'hello';
+/* let string = 'hello';
 string += ' john';
-console.log(string);
+console.log(string); */
+
+/*
+Logical operators
+    AND && -> all operands are true -> true
+    OR || -> atleast one operand is true -> true
+    NOT ! -> convert the boolean value to opposite value
+*/
+
+// AND operator
+const age = 19;
+const isVegan = true;
+console.log(isVegan && age > 18); // returns true
+
+console.log('truthy' && 1 && true && 1234); //returns 1234
+//if all values are truthy, returns last truthy value
+
+console.log('truthy' && 0 && true && 1234); //returns 0
+// if one value if falsy, it will return the first falsy value
+
+// OR operator
+console.log('truthy' || 1 || true || 1234); //returns truthy
+//returns the first truthy value
+
+console.log('' || 0 || false || NaN); //retuns NAN
+// if all operators are falsy, it returns last falsy value
+
+// NOT operator
+console.log(!false); // accept single value and returns inverse boolean value
+
+console.log(!!0); // returns false
