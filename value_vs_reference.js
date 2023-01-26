@@ -61,6 +61,7 @@ const numbers2 = numbers.slice();
 console.log(numbers2); // 1, 2, 3, 4, 5]
 
 // cloning objects
+// shallow cloning
 
 // spread operator
 const man = { name: 'John', age: 20 };
@@ -77,3 +78,49 @@ const otherWoman = Object.assign({}, woman);
 woman.age = 22;
 console.log(woman); // {name: 'Jenny', age: 22}
 console.log(otherWoman); // {name: 'Jenny', age: 25}
+
+const candidate = {
+  name: 'Emma',
+  car: {
+    brand: 'BMW',
+    color: 'blue',
+    wheels: 4,
+  },
+};
+
+const newCandidate = { ...candidate }; // one level copy
+
+newCandidate.name = 'Mia'; // name is one level deep so updated in newCandidate only
+newCandidate.car.color = 'red'; // color is 2 level deep so it is a shallow copy
+console.log(candidate.name); // Emma
+console.log(newCandidate.name); // Mia
+console.log(candidate.car.color); // red
+console.log(newCandidate.car.color); // red
+
+const otherCandidate = { ...candidate, car: { ...candidate.car } }; // two level copy
+
+// deep cloning
+const character = {
+  name: 'Emma',
+  car: {
+    brand: 'BMW',
+    color: 'blue',
+    wheels: 4,
+  },
+};
+
+const stringifyCharacter = JSON.stringify(character);
+
+console.log(stringifyCharacter);
+
+const deepCopyCharacter = JSON.parse(stringifyCharacter);
+
+console.log(deepCopyCharacter);
+
+deepCopyCharacter.car.color = 'red';
+
+console.log(character.car.color); // blue
+console.log(deepCopyCharacter.car.color); // red
+
+//one line deep cloning
+const newCharacter = JSON.parse(JSON.stringify(character));
