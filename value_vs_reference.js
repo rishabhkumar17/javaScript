@@ -20,10 +20,25 @@ console.log(otherAnimals); // ['dogs', 'cats', 'cow']
 const person = {
   firstName: 'John',
   lastName: 'Snow',
-};
-const otherPerson = person;
+}; // #123asd example location
+const otherPerson = person; // pointing/reference to #123asd
 person.firstName = 'Johnny';
+// person and otherPerson point to 'same location' in the memory
 
 console.log(person); // {firstName: 'Johnny', lastName: 'Snow'}
 console.log(otherPerson); // {firstName: 'Johnny', lastName: 'Snow'}
 // Why both objects are same?
+
+// When a variable is assigned a primitive value it just copies that value.
+// When a variable is assigned a complex / non primitive value
+// it is givin a reference to that objects location in memory
+
+const individual = { name: 'John' }; // #123asd
+const otherIndividual = { name: 'John' }; // #321dsa
+
+console.log(individual === otherIndividual); // false
+// because both objects point to different location
+
+const individual2 = individual;
+console.log(individual === individual2); // true
+// both point to same memory location
