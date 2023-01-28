@@ -61,14 +61,14 @@ available, is then used in the program
 const functionOne = () => {
   console.log('function one, part 1'); // 1
 
-  functionTwo();
+  //   functionTwo();
 
   console.log('function one, part 2'); // 2
 };
 
-const functionTwo = () => {
+/* const functionTwo = () => {
   setTimeout(() => console.log('function two'), 2000); // waiting -> 3
-};
+}; */
 
 functionOne();
 /* 
@@ -77,3 +77,36 @@ output ->
     function one, part 2
     function two
 */
+
+// Data fetching
+
+// API - Application programming interface
+// An API, or application programming interface,
+// is a set of defined rules that enable
+// different applications to communicate with each other.
+
+// const fetchUser = (username) => {
+//   setTimeout(() => {
+//     return { username };
+//   }, 2000);
+// };
+
+// const user = fetchUser('Michael');
+// console.log(user); // undefined
+
+// callback funtion -> calls backs after a certain action
+// happens after something is done
+
+const fetchUser = (username, callback) => {
+  console.log('fetching...');
+
+  setTimeout(() => {
+    console.log('User fetched');
+
+    callback({ username });
+  }, 2000);
+};
+
+fetchUser('Michael', (user) => {
+  console.log(user); // {username: 'Michael'}
+});
