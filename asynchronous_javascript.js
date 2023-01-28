@@ -97,7 +97,7 @@ output ->
 // callback funtion -> calls backs after a certain action
 // happens after something is done
 
-const fetchUser = (username, callback) => {
+/* const fetchUser = (username, callback) => {
   console.log('fetching user...');
 
   setTimeout(() => {
@@ -126,6 +126,8 @@ const fetchPhotoDetails = (photo, callback) => {
     callback('[Details]');
   }, 2000);
 };
+
+NOT USING THIS => callback hell
 fetchUser('Michael', (user) => {
   console.log(user); // {username: 'Michael'}
 
@@ -136,4 +138,44 @@ fetchUser('Michael', (user) => {
       console.log(photoDetail); // [Details]
     });
   });
-}); // callback hell - violates DRY principle
+}); */ // callback hell - violates DRY principle
+
+// Promises
+const fetchUser = (username) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      console.log('user fetched');
+      resolve({ username });
+      reject('User not found');
+    }, 2000);
+  });
+};
+
+const fetchUserPhotos = (username) => {
+  return new Promise((resolve, reject) => {
+    console.log('fetching photos...');
+
+    setTimeout(() => {
+      console.log('photos fetched for ' + username);
+
+      resolve(['Photo 1', 'Photo 2']);
+    }, 2000);
+  });
+};
+
+const fetchPhotoDetails = (photo) => {
+  return new Promise((resolve, reject) => {
+    console.log('fetching photo details...');
+
+    setTimeout(() => {
+      console.log('photo details of ' + photo);
+
+      resolve('[Details]');
+    }, 2000);
+  });
+};
+
+fetchUser('Michael')
+  .then((user) => fetchUserPhotos(user.username))
+  .then((photos) => fetchPhotoDetails(photos[0]))
+  .then((details) => console.log(details));
