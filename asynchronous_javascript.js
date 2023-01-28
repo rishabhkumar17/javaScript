@@ -98,15 +98,42 @@ output ->
 // happens after something is done
 
 const fetchUser = (username, callback) => {
-  console.log('fetching...');
+  console.log('fetching user...');
 
   setTimeout(() => {
-    console.log('User fetched');
+    console.log('user fetched');
 
     callback({ username });
   }, 2000);
 };
 
+const fetchUserPhotos = (username, callback) => {
+  console.log('fetching photos...');
+
+  setTimeout(() => {
+    console.log('photos fetched for ' + username);
+
+    callback(['Photo 1', 'Photo 2']);
+  }, 2000);
+};
+
+const fetchPhotoDetails = (photo, callback) => {
+  console.log('fetching photo details...');
+
+  setTimeout(() => {
+    console.log('photo details fetched for ');
+
+    callback('[Details]');
+  }, 2000);
+};
 fetchUser('Michael', (user) => {
   console.log(user); // {username: 'Michael'}
-});
+
+  fetchUserPhotos(user.username, (photos) => {
+    console.log(photos); // ['Photo 1', 'Photo 2']
+
+    fetchPhotoDetails(photos[0], (photoDetail) => {
+      console.log(photoDetail); // [Details]
+    });
+  });
+}); // callback hell - violates DRY principle
