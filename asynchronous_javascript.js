@@ -141,7 +141,7 @@ fetchUser('Michael', (user) => {
 }); */ // callback hell - violates DRY principle
 
 // Promises
-/* const fetchUser = (username) => {
+const fetchUser = (username) => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       console.log('user fetched');
@@ -175,10 +175,31 @@ const fetchPhotoDetails = (photo) => {
   });
 };
 
-fetchUser('Michael')
-  .then((user) => fetchUserPhotos(user.username))
-  .then((photos) => fetchPhotoDetails(photos[0]))
-  .then((details) => console.log(details)); */
+// fetchUser('Michael')
+//   .then((user) => fetchUserPhotos(user.username))
+//   .then((photos) => fetchPhotoDetails(photos[0]))
+//   .then((details) => console.log(details));
 
 // Async Await
 // async functions return promises
+// async - await
+const fetchNumber = async () => {
+  return 25;
+};
+
+const consoleFetchedNumber = async () => {
+  console.log(await fetchNumber());
+};
+consoleFetchedNumber();
+
+fetchNumber().then((number) => console.log(number));
+
+const displayData = async () => {
+  const user = await fetchUser('Michael');
+  const photos = await fetchUserPhotos(user.username);
+  const photoDetails = await fetchPhotoDetails(photos[0]);
+
+  console.log(photoDetails);
+};
+
+displayData();
