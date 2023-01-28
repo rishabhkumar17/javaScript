@@ -141,7 +141,7 @@ fetchUser('Michael', (user) => {
 }); */ // callback hell - violates DRY principle
 
 // Promises
-const fetchUser = (username) => {
+/* const fetchUser = (username) => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       console.log('user fetched');
@@ -178,4 +178,7 @@ const fetchPhotoDetails = (photo) => {
 fetchUser('Michael')
   .then((user) => fetchUserPhotos(user.username))
   .then((photos) => fetchPhotoDetails(photos[0]))
-  .then((details) => console.log(details));
+  .then((details) => console.log(details)); */
+
+// Async Await
+// async functions return promises
